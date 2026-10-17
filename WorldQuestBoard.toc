@@ -1,0 +1,16 @@
+## Interface: 70300
+## Title: World Quest Board
+## Notes: Lists Legion world quests beside the world map, grouped and filtered by reward, with per-character world quest statistics.
+## Author: Stefan Sretenovic
+## Version: 1.0.0
+## SavedVariables: WorldQuestBoardDB, WorldQuestBoardStatsDB
+## OptionalDeps: ElvUI, TomTom
+## X-Category: Map
+## X-Client: Legion 7.3.5 (build 26972)
+
+Core.lua
+Data.lua
+Panel.lua
+Stats.lua
+StatsWindow.lua
+Skin.lua
