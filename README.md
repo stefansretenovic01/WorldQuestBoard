@@ -1,165 +1,195 @@
 # World Quest Board
 
-A Legion world quest list beside the world map, grouped and filtered by reward, plus per-character world quest statistics.
+See every world quest and its reward in one list next to your world map. No more hovering over every pin to find the gear, Artifact Power, Order Resources or gold.
 
-Built for the **Legion 7.3.5 client (build 26972, interface 70300)** used by Tauri's Legion realms. It does not work on the current retail client, and it isn't intended to.
+![The World Quests list next to the world map](docs/screenshot.png)
 
-## Installation
+> **Only for Legion 7.3.5**, the version used by Legion private servers such as Tauri. It does **not** work on today's official World of Warcraft.
 
-1. Close the game, or log out to the character screen.
-2. Copy the `WorldQuestBoard` folder into
-   `C:\Games\TauriWoW\Tauri Launcher\Legion\Interface\AddOns\`
-   so that `AddOns\WorldQuestBoard\WorldQuestBoard.toc` exists.
-3. Start the game. On the character screen, open **AddOns** and make sure **World Quest Board** is enabled. If the client reports the addon as out of date, tick **Load out of date AddOns**.
-4. Log in with a level 110 character that has world quests unlocked ("Uniting the Isles").
+## How to use it
 
-## Using it
+Press **M** to open the world map. The **World Quests** list appears next to it.
 
-Open the world map (`M`). The **World Quests** panel appears beside it:
+- On the **small map**, the list sits along the map's right side.
+- On the **fullscreen map**, the list covers the right edge of the map. Drag it by its title to move it anywhere.
+- Click the **WQ** button at the top of the map to hide or show the list.
 
-- **Windowed map:** the panel is docked to the right edge of the map.
-- **Fullscreen map:** there is usually no room beside the map, so the panel overlays the right edge of the map. Drag it anywhere you like by its title bar.
+![Changing the grouping, opening the statistics and using the filters](docs/demo.gif)
 
-Each row shows:
+## What you get
 
-- **Icon:** the reward icon. The amount is printed on it: item level for gear, Artifact Power, Order Resources, gold or other currency amount, or stack size.
-- **Left text:** what the reward is, in a larger font:
-  - Gear shows the slot it goes in (e.g. "Hands", "Two-Hand", "Holy Relic") in the item's quality colour.
-  - Artifact Power, Order Resources, Gold and Honor show only their name; the amount is on the icon.
-  - Other items and currencies show their name.
-- **Second line (only when relevant):** "In progress", "Completed", and quest types such as Elite, Dungeon, Pet Battle or PvP.
-- **Right side:** time left, with the zone underneath. The zone is shown in white when it is the map you are viewing. When grouping by zone, the zone is the group header instead.
-- **Other markers:** a coloured left edge marks rare (blue) and epic (purple) world quests. An emissary icon appears when the quest counts toward an emissary, and a check mark when the quest is tracked.
+- Quests grouped by reward (gear, Artifact Power, gold, …) or by zone, with totals.
+- Filters to hide the rewards you don't care about.
+- Click a quest to find it on the map.
+- The item level or amount printed right on each reward icon.
+- Your own world quest statistics: quests done, gold and Order Resources earned, best gear.
+- Matches the look of ElvUI if you use it, and works with TomTom waypoints. Neither is needed.
+- All Broken Isles and Argus world quests in one list, right beside the map.
 
-The quest name is shown in the tooltip.
+## How to install
 
-| Action | Result |
-| --- | --- |
-| Click a group header | Collapse or expand that group |
-| Hover a gear quest and hold **Shift** | Compare the reward with your equipped item |
-| Click a quest | Switch the map to the quest's zone and highlight its position (pulsing ring plus Blizzard's own pin ping) |
-| Shift-click a quest | Track or untrack it in the objective tracker. If a chat box is open, the quest link is inserted instead |
-| Ctrl-click a quest | Add a TomTom waypoint (only if TomTom is installed) |
-| Hover a quest | Tooltip with name, type, zone, faction, time left, status, emissary, objectives, full rewards and category |
-| **Filters** button | Show or hide the reward-type checkboxes |
-| Checkbox, left-click | Show or hide that reward type. Several types can be on at once |
-| Checkbox, right-click | Show only that reward type |
-| **Pet battles** checkbox | Show or hide pet battle world quests, whatever their reward. Works together with the reward-type filters |
-| **Reset filters** | Show all reward types and pet battles again |
-| **Sort** button | Cycle the sort order: time left, zone, reward amount, quest name |
-| **Group** button | Switch between grouping by reward category and by zone. Reward filters apply in both modes |
-| **Stats** button | Open or close the statistics window |
-| **WQ** button in the map's title bar | Show or hide the panel |
+1. **Download.** At the top of this page, click the green **Code** button, then **Download ZIP**.
+2. **Unzip.** Right-click the downloaded file and choose **Extract All…**.
+3. **Find the addon folder.** Open the extracted folders until you see the addon's files: `Core`, `Panel`, `WorldQuestBoard` and a few more. The folder that holds them is the one you want. It's called `WorldQuestBoard-master`.
+   > Windows usually puts a folder inside a folder with the same name: `WorldQuestBoard-master\WorldQuestBoard-master`. Use the **inner** one.
+4. **Rename** that folder to exactly **`WorldQuestBoard`**. WoW won't load it under any other name.
+5. **Open your WoW folder.** That's the folder with `Wow.exe` (or `Wow-64.exe`) in it. Inside, open `Interface`, then `AddOns`. If either folder doesn't exist, create it.
+6. **Move** your `WorldQuestBoard` folder into `AddOns`. It should end up like this:
+   ```
+   Your WoW folder
+   └── Interface
+       └── AddOns
+           └── WorldQuestBoard
+               ├── Core.lua
+               ├── WorldQuestBoard.toc
+               └── (more files)
+   ```
+7. **Start WoW.** If it's already running, quit completely and start it again. WoW only finds new addons when it starts.
+8. **Turn it on.** On the character select screen, click **AddOns** (bottom-left corner) and make sure **World Quest Board** is ticked. If it says "Out of date", also tick **Load out of date AddOns**.
 
-### ElvUI
+### Mouse controls
 
-When ElvUI is installed, the panel, the **WQ** map button and the statistics window use ElvUI's own skin: flat transparent backdrop, ElvUI buttons, checkboxes, scroll bar and close button, and bordered reward icons. This matches an ElvUI-skinned world map.
+| Do this                                    | What happens                                                                                       |
+| ------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| Click a quest                              | The map jumps to that zone and the quest gets a pulsing ring                                       |
+| **Shift** + click a quest                  | Track or stop tracking it. If you're typing in chat, the quest link goes into your message instead |
+| **Ctrl** + click a quest                   | Add a TomTom waypoint (needs the TomTom addon)                                                     |
+| Hold **Shift** while hovering a gear quest | Compare the reward with what you're wearing                                                        |
+| Click a group's title                      | Fold or unfold that group                                                                          |
 
-- **When the skin is skipped:** ElvUI's Blizzard skins or its World Map skin are turned off in `/ec` → Skins.
-- **Turning it off:** type `/wqb skin`, then `/reload`. Skinned frames can't be switched back while the game is running.
+### Buttons at the top
 
-### Reward categories
+- **Filters:** shows the list of reward types. Click a type to hide or show it.
+  - **Right-click** a type to show _only_ that type.
+  - **Pet battles** hides or shows all pet battle quests, whatever their reward.
+  - **Reset filters** shows everything again.
+- **Sort:** changes the order: time left, zone, reward amount or quest name. Each click picks the next one.
+- **Group:** switches between grouping by reward (**Category**) and by **Zone**.
+- **Stats:** opens your statistics (see below).
 
-Each quest goes into exactly one category, chosen from its actual reward data. When a quest has more than one kind of reward, the first matching category in this order wins:
+Your choices are remembered next time you play: filters, sorting, grouping, folded groups and where you put the list.
 
-1. **Gear & Equipment**: weapons, armor and artifact relics. The item level is read from the reward tooltip.
-2. **Artifact Power**: AP tokens (amount read from the token's tooltip) or direct artifact XP.
-3. **Order Resources**: currency 1220.
-4. **Gold**
-5. **Crafting & Professions**: trade goods and recipes.
-6. **Reputation**: reputation tokens, or quests whose only reward is reputation.
-7. **Other Rewards**: other currencies (Nethershards, Veiled Argunite, …), other items and honor.
-8. **Reward Data Pending**: the client has not received the quest's reward data yet. These quests move to their real category once the data arrives.
+### Reward groups
 
-Category headers show the number of quests. The gold, Order Resources and Artifact Power headers also show the total amount available.
+Each quest is listed in one group only.
+
+| Group (name in Filters)           | What's in it                                                                                            |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| Gear & Equipment (Gear)           | Weapons, armour and artifact relics                                                                     |
+| Artifact Power                    | Artifact Power                                                                                          |
+| Order Resources                   | Order Resources                                                                                         |
+| Gold                              | Gold                                                                                                    |
+| Crafting & Professions (Crafting) | Trade goods and recipes                                                                                 |
+| Reputation                        | Reputation tokens, or quests that only give reputation                                                  |
+| Other Rewards (Other)             | Everything else: Nethershards, Veiled Argunite, other items, honor                                      |
+| Reward Data Pending (No data yet) | The game hasn't sent the reward yet. These quests move to the right group by themselves once it arrives |
+
+If a quest gives more than one reward, it goes in whichever group comes first in this table. For example, a quest that gives gear _and_ gold is listed under Gear & Equipment.
+
+Each group's title shows how many quests it has. Artifact Power, Order Resources and Gold also show how much you could earn in total.
 
 ## Statistics
 
-Click **Stats** on the panel, or type `/wqb stats`. The window is hidden by default. It never opens on its own, neither at login nor when the map opens; only its position is remembered.
+Click **Stats** at the top of the list to see, for the character you're playing:
 
-The window tracks these values per character:
+- How many world quests you've completed
+- How much gold you've earned from world quests
+- How many Order Resources you've earned from world quests
+- Your best gear from a world quest (hover it to see the item)
+- Your latest completed quests and what each one gave you
 
-- **World quests completed**
-- **Gold earned** from world quests
-- **Order Resources earned** from world quests
-- **Highest item level gear** received from a world quest, with the item. Hover the item to see its tooltip.
+Good to know:
 
-It also lists the most recent completions, with the rewards credited for each one.
+- **Counting starts when you install the addon.** Quests done before that, or while the addon was turned off, aren't counted.
+- It keeps counting while the map is closed.
+- Emissary quests and bonus objectives don't count.
+- **Gold and Order Resources** are only added when the addon sees your gold or resources actually go up. If it can't confirm that, the quest still counts, but its gold or resources aren't added. The quest is marked "rewards unconfirmed". This is rare.
+- **Gear** counts the item you actually got, so Warforged and Titanforged upgrades are included. If the item was sent to your mailbox instead, the quest's listed item level is used and marked "(listed item level)".
+- Each character has its own statistics, and keeps them if renamed.
 
-### Resetting statistics
+**Starting over:** click **Reset statistics...** at the bottom of the statistics window, then click **Yes, reset** within 15 seconds. Only the character you're playing is reset.
 
-1. Click **Reset statistics...** in the statistics window, or type `/wqb resetstats`.
-2. Click **Yes, reset** to confirm. The confirmation cancels itself after 15 seconds.
+## Chat commands
 
-Only the current character is reset. Other characters and interface settings are not affected.
+You don't need these for normal use, but they can help. To use one, press **Enter**, type the command, and press **Enter** again.
 
-## Slash commands
+| Command                     | What it does                                                                                                 |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `/wqb`                      | Show or hide the list                                                                                        |
+| `/wqb stats`                | Open or close the statistics                                                                                 |
+| `/wqb reset filters`        | Show all reward types again                                                                                  |
+| `/wqb reset position`       | Move the list and the statistics window back to where they started                                           |
+| `/wqb reset all`            | Reset all of this addon's settings (filters, sorting, positions). Your statistics are kept                   |
+| `/wqb lock` / `/wqb unlock` | Stop or allow dragging the list                                                                              |
+| `/wqb skin`                 | Turn the ElvUI look off or on. Then type `/reload`, which reloads the game's interface (takes a few seconds) |
+| `/wqb resetstats`           | Reset this character's statistics (asks you first)                                                           |
+| `/wqb help`                 | List all commands in chat                                                                                    |
 
-| Command | Effect |
-| --- | --- |
-| `/wqb` | Show or hide the quest list |
-| `/wqb show`, `/wqb hide` | Show or hide the quest list explicitly |
-| `/wqb stats` | Open or close the statistics window |
-| `/wqb resetstats` | Reset this character's statistics (asks for confirmation) |
-| `/wqb reset filters` | Show all reward types and pet battles again |
-| `/wqb reset position` | Restore the default positions of the panel and the statistics window |
-| `/wqb reset all` | Restore all interface settings (statistics are kept) |
-| `/wqb lock`, `/wqb unlock` | Lock or unlock dragging of the panel |
-| `/wqb skin` | Turn the ElvUI look on or off (takes effect after `/reload`) |
-| `/wqb scan` | Print diagnostics: zones queried, quests found, quests still waiting for data, and any missing client APIs |
-| `/wqb aptip` | Print the raw reward tooltip text of up to three Artifact Power quests, with the amount the addon parsed. Use this if AP amounts look wrong |
-| `/wqb log` | Print a chat message for every completion and every reward credited (useful to verify the statistics) |
+`/worldquestboard` works the same as `/wqb`.
 
-## Saved data
+These three are only for checking problems and reporting bugs:
 
-Saved data lives in `WTF\Account\<account>\SavedVariables\WorldQuestBoard.lua`, in two separate tables:
+| Command      | What it does                                                                                         |
+| ------------ | ---------------------------------------------------------------------------------------------------- |
+| `/wqb scan`  | Shows how many quests the addon found, and how many are still loading                                |
+| `/wqb aptip` | Shows how the addon reads Artifact Power amounts                                                     |
+| `/wqb log`   | Writes a chat message each time a quest or reward is added to your statistics. Type it again to stop |
 
-- **`WorldQuestBoardDB`** holds the account-wide interface settings: filters (including the pet battle toggle), collapsed groups, sort order, grouping (category or zone), the ElvUI look, panel visibility, panel position (stored separately for the windowed and fullscreen map), the lock state and the statistics window position.
-- **`WorldQuestBoardStatsDB.chars["Name-Realm"]`** holds the per-character statistics. Each record also stores the character's GUID:
-  - A renamed character keeps its statistics.
-  - A new character that reuses a deleted character's name starts fresh. The old record is kept under a separate key.
+## Using ElvUI or TomTom?
 
-Missing, outdated or invalid values are repaired field by field when the addon loads.
+- **ElvUI:** the list and statistics window take on ElvUI's look by themselves. This is skipped if you've turned off ElvUI's Blizzard skins or its World Map skin (`/ec` → Skins). To turn it off yourself, type `/wqb skin` and then `/reload`.
+- **TomTom:** hold **Ctrl** and click a quest to set a waypoint to it.
 
-## How it works, and its limits on 7.3.5
+## Something not working?
 
-These limits come from what the 7.3.5 client exposes. They were verified against the 7.3.5 FrameXML source.
+**World Quest Board isn't in the AddOns list.**
+The folder is named wrong or in the wrong place. It must be called exactly `WorldQuestBoard` (not `WorldQuestBoard-master`), sit inside `Interface\AddOns`, and have the addon's files directly inside it, not another folder. Then quit WoW completely and start it again.
 
-### Quest list
+**It says "Out of date".**
+Tick **Load out of date AddOns** on the AddOns screen.
 
-- **Quest source:** quests come from `C_TaskQuest.GetQuestsForPlayerByMapID` for every Broken Isles and Argus zone. The zone list comes from `GetMapZones`, plus a built-in list of zone IDs. Bonus objectives are filtered out.
-- **Missing quest data:** a quest is listed only after the client has its quest data. The panel footer shows how many are still waiting. Data that arrives later (`QUEST_LOG_UPDATE`, `GET_ITEM_INFO_RECEIVED`) refreshes the list automatically, with at most one refresh per second.
-- **Refresh fallback:** the list rescans every 60 seconds while the map is open, and retries a few times while data is still loading. Nothing runs while the map is closed.
-- **Item level and AP amount:** no API reports these, so they are read from the reward tooltip text. If the tooltip isn't loaded, no number is shown.
-  - AP amounts may be written as "1,250", "2.5 million", "6 billion" or "96M". Colour codes and non-breaking spaces are ignored.
-  - If amounts still look wrong, `/wqb aptip` shows the exact tooltip text the client provides.
-  - The item level shown is the listed reward. Warforged or Titanforged upgrades only show up after you receive the item.
-- **Reputation:** the client exposes the faction of a quest, but not the reputation amount, so no amount is shown.
-- **Time left:** comes from `C_TaskQuest.GetQuestTimeLeftMinutes`. If the server reports no time, the panel shows "--".
-- **Fullscreen map:** the panel covers part of the map by default. Drag it, or hide it with the **WQ** button.
+**The list doesn't appear when I open the map.**
 
-### Statistics
+1. Type `/wqb show`.
+2. Still nothing? Type `/wqb reset position`. It may have been dragged off the screen.
+3. Check that your character is level 110 and has unlocked world quests.
 
-- **Completions:** counted from `QUEST_TURNED_IN` and `WORLD_QUEST_COMPLETED_BY_SPELL`, for world quests only. Emissary quests and bonus objectives are not counted.
-  - The same quest is never counted twice within an hour, including across `/reload`.
-  - A quest disappearing from the map is never treated as a completion.
-- **Gold:** the amount the server reports in `QUEST_TURNED_IN`. This includes the gold paid instead of XP at level 110. If the server reports no amount, the quest's listed gold is credited only when your money rises by at least that much within a few seconds.
-- **Order Resources:** the client never reports this amount directly. The quest's listed amount is credited only when your Order Resources total rises by at least that much within a few seconds of the completion.
-  - Rewards that can't be confirmed this way are not credited. The completion is still counted and is marked "rewards unconfirmed".
-- **Gear:** the item from your own "You receive item:" message that matches the quest's reward item is used, so upgrades count. If no such message arrives (for example, the reward was mailed), the listed item level is used and marked "(listed item level)".
-- **No history:** completions from before the addon was installed, or made while it was disabled, are not available.
-- **Tracking in combat:** Shift-click tracking is refused during combat, because changing the objective tracker from addon code in combat can cause "action blocked" errors.
+**The list covers my fullscreen map.**
+Drag it by its title, or click **WQ** at the top of the map to hide it.
 
-## Checking it in game
+**Some quests are missing, or are under "Reward Data Pending".**
+The game is still sending quest information. Give it a moment: the list updates by itself. The bottom of the list shows how many quests are still "waiting for server data".
 
-1. **Panel appears:** open the map in windowed mode, then switch to fullscreen. The panel should appear beside or over the map in both modes, and a `WQ` button should be in the map's title bar.
-2. **Quests match the map:** run `/wqb scan`. Compare the number of world quests with what the map shows. "Missing client APIs: none" is expected.
-3. **Categories:** check that the categories match the reward icons on the map. Hover a few quests and compare the tooltip with Blizzard's pin tooltip.
-4. **Filters:** toggle filters, right-click one, then use **Reset filters**. Collapse a category, then `/reload`. Filters, collapsed categories, sort order and panel position should persist.
-5. **Navigation:** click a quest in another zone. The map should switch zones and a ring should pulse on the quest. Shift-click should track the quest. With TomTom installed, Ctrl-click should add a waypoint.
-6. **Statistics:** run `/wqb log`, then complete a gold quest, an Order Resources quest and a gear quest.
-   - The chat should show each completion and each reward credited.
-   - The statistics window should show the new totals.
-   - Run `/reload` and check that the totals are unchanged.
-7. **Separate characters:** log in on another character. Its statistics should start at zero, and the first character's statistics should be unchanged.
-8. **Reset:** reset the statistics and confirm. Only the current character should be cleared.
+**An Artifact Power amount or item level is missing or looks wrong.**
+These numbers appear once the game has loaded the reward's details, so give it a moment. If one still looks wrong, type `/wqb aptip`, take a screenshot and report it (see the end of this page).
+
+## Things it can't do
+
+The 7.3.5 game doesn't give addons this information, so:
+
+- Reputation quests show the faction, but not how much reputation you get.
+- The item level shown is the quest's normal reward. Warforged and Titanforged upgrades only show once you get the item.
+- Time left sometimes shows "--" when the server doesn't say.
+- Shift-click tracking is turned off during combat, to avoid WoW's "action blocked" error.
+- The list only updates while the map is open. (Your statistics are still counted when it's closed.)
+
+## Updating
+
+1. Delete the old `WorldQuestBoard` folder from `Interface\AddOns`.
+2. Download the new version and install it the same way as above, including the rename.
+
+Your settings and statistics are saved somewhere else, so you won't lose them.
+
+## Uninstalling
+
+Delete the `WorldQuestBoard` folder from `Interface\AddOns`.
+
+To also delete your settings and statistics, delete this file:
+`Your WoW folder\WTF\Account\(your account name)\SavedVariables\WorldQuestBoard.lua`
+
+## Found a bug? Have an idea?
+
+Please [open an issue on GitHub](https://github.com/stefansretenovic01/WorldQuestBoard/issues) (you'll need a free GitHub account). It helps a lot to include:
+
+- What you did, what you expected, and what happened instead.
+- A screenshot taken right after typing `/wqb scan` in chat. Press **Print Screen** to take it; WoW saves it in the `Screenshots` folder inside your WoW folder.

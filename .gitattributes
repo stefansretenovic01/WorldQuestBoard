@@ -1,0 +1,3 @@
+# Keep README images out of the "Download ZIP" archive players install
+/docs export-ignore
+/.gitattributes export-ignore
